@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ut44buo06c3r"]
+
+[ext_resource type="Texture2D" uid="uid://bn06nqln0v5vr" path="res://assets/Players/Variable sizes/Blue/alienBlue_front.png" id="1_bqb54"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_k0vv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpbyp"]
+atlas = ExtResource("1_bqb54")
+region = Rect2(0, 0, 131, 188)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjfyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpbyp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l68rg"]
+radius = 20.0
+height = 54.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_k0vv6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24.125)
+scale = Vector2(0.267176, 0.253989)
+sprite_frames = SubResource("SpriteFrames_kjfyt")
+animation = &"idle"
+frame_progress = 0.0124736
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_l68rg")
